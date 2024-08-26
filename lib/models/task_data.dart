@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:task_flow/models/task.dart';
 
@@ -9,11 +10,16 @@ class TaskData extends ChangeNotifier {
 
   int get taskCount => _tasks.length;
 
-  List<Task> get tasks => _tasks;
+  UnmodifiableListView<Task> get tasks => UnmodifiableListView(_tasks);
 
   void addTask(String taskTitle) {
     final task = Task(taskText: taskTitle);
     _tasks.add(task);
+    notifyListeners();
+  }
+
+  void updateTask(Task task) {
+    task.toggleDone();
     notifyListeners();
   }
 }
