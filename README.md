@@ -1,3 +1,3 @@
-# task_flow
+# Task Flow app
 
-A new Flutter project.
+Simple looking and trivial to-do list app.
